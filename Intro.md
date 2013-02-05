@@ -5,17 +5,20 @@ These requirements are being developed after testing the beta, looking at the ma
 Throughout this requirements document, we reference the concept of a throw-away (temporary) tenant and a named (permanent) tenant.  Throw-away tenants are destroyed after the user leaves our application.  These are also known as unauthenticated tenants, because users can get into our product without any form of authentication occurring.
 
 USE CASE 1a: Register & Login Options on Home Page - Non GOOG Apps Email
+===========
 This is the behavior that we currently have on the home page.  Today we let people either register a new account, or to login to an existing account.  We would never allow for a throw-away tenant to be created off of our home page.  We will always want to force a user into registration or login.   The anonymous concept is something we should only introduce to users who are using the CodeNow URL concept.  
 
 TODO 1: At some point, once we have a designer, we should add in “Login” oAuth and field forms on the top of our menu bar that are always there.  Today, it’s not obvious that “register” on the main page is the same as “login” for those people who have already created an account with us.
 
 USE CASE 1b: Register & Login Options on Home Page - GOOG Apps Email
+===========
 If the user registers with an email address that is mapped to a Google Apps organizational email account, we should offer two choices:
 
 Create a new, named, private tenant not associated with GOOG Apps Organization.
 Join the organization’s tenant. The admin of the tenant should be sent an email to accept the request. A notification should also be displayed within the tenant to alert the admin of the request.
 
 USE CASE 2: Code Now → Throw Away Tenant - No Previous Visits to Codenvy.com
+===========
 In this use case, a user is selecting a CodeNow URL that does not require any authentication.  Also, this is a user where we have no previous tracking history, either from cookies we have established or from a previous login.  As far as we can tell, this is a brand new users.  The goal of this use case is to get the user into the editing / building / compiling window as fast as possible, with zero clicks other than the one used to select the Code Now button.
 
 To do this, we would bypass all of the authentication mechanisms.  We would create a temporary tenant, with a random ID on it.  This tenant would have a fixed lifespan, and we would terminate the tenant automatically after a certain number of hours of inactivity or when the user leaves the product by closing their browser tab.  There would be no way for a user to return to this tenant after they close the browser tab.   If the same user clicks on the same CodeNow button that launched them into Codenvy a second time, they would get another another temporary tenant with a different ID.
@@ -36,6 +39,7 @@ We would have special UI requirements to support this use case:
 TODO: Have graphic designer create a nice concept to represent the CodeNow button in its various states: unclicked, clicked once, clicked more than once.
 
 USE CASE 3: Code Now → Throw Away Tenant - User Has Codenvy Account & Not Logged In
+===========
 In this use case, a user is selecting a CodeNow URL that does not require any authentication.  Through cookies, we have detected that the user has a Codenvy Account & is not logged into it currently.  Note: I would not know how we might detect this, but let’s suppose it’s possible.
 
 In this use case, we will take the user into Codenvy and give them a temporary tenant automatically.  They will not need to authenticate to do this.  Once within the editor, we will have a side window that would tell the user that we are aware that they have a Codenvy account, and if they were to Login now, we will copy the project from their temporary tenant into their named tenant.  We will put the oAuth icons and the login form within this window.  The user can make full use of Codenvy within their temporary tenant even though this login window is available within the product.
@@ -43,6 +47,7 @@ In this use case, we will take the user into Codenvy and give them a temporary t
 This behavior is similar to Use Case 2, but the difference is that our side window is telling the user we are aware they have a Codenvy account and can login at any time.
 
 USE CASE 4: Code Now → User Has Codenvy Account & Currently Authenticated
+===========
 In this use case, we will also take the user into a temporary tenant automatically, but leave the user still logged in.  In this case, we will present a window off to the side that allows the user to “copy” the project from the temporary tenant into their own, but it will not require any authentication - since they are already authenticated.
 
 If the user has reached the maximum number of projects allowed.  Then upon entering into Codenvy we should bring up a dialogue box that indicates they have reached their maximum number of projects.   We would then point them to our gamification screen that indicates ways they can get more projects by further filling out their profile.
