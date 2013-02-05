@@ -1,4 +1,6 @@
-This document is outlining some deeper requirements related to the CodeNow button and onboarding into Codenvy.  These requirements are being developed after testing the beta, looking at the market place, and having internal brainstorming sessions.
+This document is outlining some deeper requirements related to the CodeNow button and onboarding into Codenvy.  
+===========
+These requirements are being developed after testing the beta, looking at the market place, and having internal brainstorming sessions.
 
 Throughout this requirements document, we reference the concept of a throw-away (temporary) tenant and a named (permanent) tenant.  Throw-away tenants are destroyed after the user leaves our application.  These are also known as unauthenticated tenants, because users can get into our product without any form of authentication occurring.
 
